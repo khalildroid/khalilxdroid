@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khalil Itto | Web Developer</title>
+    <title>Khalil Itto | Lo-Fi Dev</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Load Anime-style Fonts -->
+    <!-- Load Lo-Fi Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Exo 2', 'sans-serif'],
-                        display: ['Orbitron', 'sans-serif'],
+                        sans: ['Quicksand', 'sans-serif'],
+                        hand: ['Patrick Hand', 'cursive'],
                     },
                     colors: {
-                        anime: {
-                            bg: '#0f0c29', // Deep dark purple/blue
-                            bg2: '#302b63',
-                            bg3: '#24243e',
-                            primary: '#ff00cc', // Neon Pink
-                            secondary: '#333399', // Deep Blue
-                            accent: '#00f2ff', // Cyan
-                            text: '#e0e0e0',
+                        lofi: {
+                            bg: '#fdf6e3', // Cream/Beige background
+                            paper: '#fffefc', // Paper white
+                            text: '#5d576b', // Muted purple/gray
+                            accent: '#ff9f1c', // Soft Orange
+                            green: '#aacc00', // Sage Green
+                            brown: '#d4a373', // Wood/Coffee
+                            dark: '#2b2d42', // Darker text
                         }
                     },
                     backgroundImage: {
-                        'anime-gradient': 'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
+                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
                     }
                 }
             }
@@ -42,242 +42,219 @@
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f0c29;
+            background: #fdf6e3;
         }
         ::-webkit-scrollbar-thumb {
-            background: #302b63;
-            border-radius: 0;
-            border: 1px solid #00f2ff;
+            background: #d4a373;
+            border-radius: 5px;
+            border: 2px solid #fdf6e3;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #ff00cc;
+            background: #ff9f1c;
         }
 
-        /* Background Grid Animation */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
-            animation: moveGrid 20s linear infinite;
-        }
-        @keyframes moveGrid {
-            0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
-        }
-
-        /* Glassmorphism Card */
-        .anime-card {
-            background: rgba(48, 43, 99, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
-            clip-path: polygon(
-                0 0, 
-                100% 0, 
-                100% calc(100% - 20px), 
-                calc(100% - 20px) 100%, 
-                0 100%
-            ); /* Mecha-style angled corner */
+        /* Lo-Fi Card Style */
+        .lofi-card {
+            background-color: #fffefc;
+            border: 2px solid #2b2d42;
+            border-radius: 1rem;
+            box-shadow: 8px 8px 0px #2b2d42; /* Brutalist/Retro shadow */
             transition: all 0.3s ease;
         }
-        .anime-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff00cc;
-            box-shadow: 0 0 20px rgba(255, 0, 204, 0.4);
+        .lofi-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px #ff9f1c;
         }
 
-        /* Neon Text Glow */
-        .neon-text {
-            text-shadow: 0 0 5px rgba(0, 242, 255, 0.8), 0 0 10px rgba(0, 242, 255, 0.5);
+        /* Polaroid Gallery Style */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotation));
+            transition: all 0.3s ease;
+            cursor: zoom-in;
         }
-        .neon-text-pink {
-            text-shadow: 0 0 5px rgba(255, 0, 204, 0.8), 0 0 10px rgba(255, 0, 204, 0.5);
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 10;
+            box-shadow: 5px 10px 15px rgba(0,0,0,0.2);
         }
-
-        /* Typing Cursor */
-        .typing-cursor::after {
-            content: '_';
-            animation: blink 0.8s infinite;
-            color: #ff00cc;
-            font-weight: bold;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Button Style */
-        .anime-btn {
-            position: relative;
-            overflow: hidden;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            transition: all 0.3s;
-        }
-        .anime-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        .anime-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Image Glitch/Hover Effect */
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-        .gallery-item:hover {
-            border-color: #00f2ff;
-            box-shadow: 0 0 15px #00f2ff;
-        }
-        .gallery-item img {
-            transition: transform 0.5s ease;
+        .polaroid img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.1);
-            filter: contrast(1.2) brightness(1.1);
+            filter: sepia(20%) contrast(0.9); /* Retro photo filter */
         }
 
-        /* Sidebar Link Active State */
+        /* Tape Effect */
+        .tape {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-left: 1px dashed rgba(0,0,0,0.1);
+            border-right: 1px dashed rgba(0,0,0,0.1);
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        /* Button Style */
+        .lofi-btn {
+            background-color: #ff9f1c;
+            color: #2b2d42;
+            border: 2px solid #2b2d42;
+            box-shadow: 4px 4px 0px #2b2d42;
+            transition: all 0.2s;
+        }
+        .lofi-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #2b2d42;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Sidebar Link Active */
         .nav-link.active {
-            background: linear-gradient(90deg, rgba(255, 0, 204, 0.2), transparent);
-            border-left: 4px solid #ff00cc;
-            color: #fff;
+            color: #ff9f1c;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-style: wavy;
         }
     </style>
 </head>
-<body class="bg-anime-bg text-anime-text font-sans selection:bg-anime-primary selection:text-white min-h-screen relative">
-
-    <!-- Animated Background Grid -->
-    <div class="fixed inset-0 bg-grid opacity-30 pointer-events-none z-0"></div>
+<body class="bg-lofi-bg text-lofi-dark font-sans bg-paper-texture min-h-screen flex flex-col md:flex-row">
 
     <!-- Mobile Menu Button -->
-    <button id="menu-btn" class="fixed top-4 right-4 z-50 p-3 bg-anime-bg2 border border-anime-accent text-anime-accent rounded md:hidden hover:bg-anime-primary hover:text-white transition-all">
+    <button id="menu-btn" class="fixed top-4 right-4 z-50 p-2 bg-lofi-paper border-2 border-lofi-dark rounded-md md:hidden shadow-[4px_4px_0px_#2b2d42]">
         <i class="fas fa-bars text-xl"></i>
     </button>
 
-    <!-- Sidebar Navigation -->
-    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-anime-bg2/90 backdrop-blur-md border-r border-anime-secondary transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40 flex flex-col justify-between p-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+    <!-- Sidebar Navigation (Notebook Style) -->
+    <aside id="sidebar" class="fixed md:sticky top-0 h-screen w-64 bg-lofi-paper border-r-4 border-lofi-brown flex-shrink-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto flex flex-col justify-between p-6 shadow-xl">
+        <!-- Notebook Spirals -->
+        <div class="absolute top-0 right-0 h-full w-8 bg-repeat-y" style="background-image: radial-gradient(#d4a373 30%, transparent 31%); background-size: 20px 20px; background-position: 10px 0;"></div>
+        
         <div>
-            <div class="text-center mb-10 relative group">
-                <!-- Profile Image Container with Spinning Border -->
-                <div class="w-36 h-36 mx-auto mb-4 relative">
-                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-anime-accent animate-[spin_10s_linear_infinite] opacity-50"></div>
-                    <div class="absolute inset-2 rounded-full border-2 border-anime-primary opacity-70"></div>
-                    <img src="khalidr.jpg" alt="Khalil Itto" class="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] rounded-full object-cover shadow-lg border-2 border-white">
+            <div class="text-center mb-8">
+                <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-lofi-dark relative">
+                    <img src="khalidr.jpg" alt="Khalil Itto" class="w-full h-full object-cover sepia-[.3]">
                 </div>
-                <h2 class="text-2xl font-display font-bold text-white neon-text">KHALIL ITTO</h2>
-                <div class="h-1 w-20 bg-anime-primary mx-auto mt-2 rounded-full"></div>
-                <p class="text-xs text-anime-accent mt-2 font-mono tracking-widest">LVL. 23 DEV</p>
+                <h2 class="text-3xl font-hand font-bold text-lofi-dark">Khalil Itto</h2>
+                <p class="text-sm text-lofi-text mt-1 font-hand text-lg">Web Dev & Cozy Vibes</p>
             </div>
 
             <nav>
-                <ul class="space-y-1">
-                    <li><a href="#home" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-home w-4 text-center"></i> Home</a></li>
-                    <li><a href="#about" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-user w-4 text-center"></i> About</a></li>
-                    <li><a href="#skills" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-bolt w-4 text-center"></i> Skills</a></li>
-                    <li><a href="#experience" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-briefcase w-4 text-center"></i> Quests</a></li>
-                    <li><a href="#certificates" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-scroll w-4 text-center"></i> Achievements</a></li>
-                    <li><a href="#gallery" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-images w-4 text-center"></i> Gallery</a></li>
-                    <li><a href="#contact" class="nav-link flex items-center gap-3 px-4 py-3 hover:text-anime-primary transition-all duration-300 text-sm font-display uppercase tracking-widest"><i class="fas fa-envelope w-4 text-center"></i> Contact</a></li>
+                <ul class="space-y-4 font-hand text-xl">
+                    <li><a href="#home" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-home w-6 text-center"></i> Home</a></li>
+                    <li><a href="#about" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-user w-6 text-center"></i> About Me</a></li>
+                    <li><a href="#skills" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-pencil-ruler w-6 text-center"></i> Skills</a></li>
+                    <li><a href="#experience" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-coffee w-6 text-center"></i> Journey</a></li>
+                    <li><a href="#certificates" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-certificate w-6 text-center"></i> Certs</a></li>
+                    <li><a href="#gallery" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-camera-retro w-6 text-center"></i> Snaps</a></li>
+                    <li><a href="#contact" class="nav-link flex items-center gap-3 hover:text-lofi-accent transition-colors"><i class="fas fa-paper-plane w-6 text-center"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>
 
-        <div class="text-center text-[10px] text-gray-500 mt-6 font-mono">
-            SYSTEM: ONLINE<br>&copy; 2025 KHALIL ITTO
+        <!-- Fake Music Player Widget -->
+        <div class="mt-6 bg-lofi-bg p-4 rounded-lg border-2 border-lofi-dark relative overflow-hidden">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 bg-lofi-accent rounded-full flex items-center justify-center text-white animate-spin-slow"><i class="fas fa-music"></i></div>
+                <div>
+                    <p class="text-xs font-bold font-hand text-lofi-dark">Now Playing</p>
+                    <p class="text-xs text-lofi-text truncate w-24">Lofi Beats to Code To</p>
+                </div>
+            </div>
+            <div class="h-1 bg-gray-300 rounded-full overflow-hidden">
+                <div class="h-full bg-lofi-accent w-1/2"></div>
+            </div>
+            <div class="flex justify-center gap-4 mt-2 text-lofi-dark text-xs">
+                <i class="fas fa-backward cursor-pointer hover:text-lofi-accent"></i>
+                <i class="fas fa-pause cursor-pointer hover:text-lofi-accent"></i>
+                <i class="fas fa-forward cursor-pointer hover:text-lofi-accent"></i>
+            </div>
         </div>
     </aside>
 
     <!-- Main Content -->
-    <main class="md:ml-64 min-h-screen relative z-10">
+    <main class="flex-1 p-4 md:p-10 relative">
         
         <!-- Home / Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center px-8 py-20 border-b border-anime-secondary/30 relative overflow-hidden">
-            <!-- Decorative Elements -->
-            <div class="absolute top-10 right-10 w-20 h-20 border-t-4 border-r-4 border-anime-accent opacity-50"></div>
-            <div class="absolute bottom-10 left-10 w-20 h-20 border-b-4 border-l-4 border-anime-primary opacity-50"></div>
-            
-            <div class="max-w-4xl w-full z-10 text-center md:text-left">
-                <p class="text-anime-accent font-mono mb-4 tracking-[0.2em] text-sm">/// SYSTEM INITIALIZED ///</p>
-                <h1 class="text-6xl md:text-8xl font-display font-black text-white mb-4 leading-tight neon-text">
-                    KHALIL<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-anime-primary to-purple-500">ITTO</span>
+        <section id="home" class="min-h-[80vh] flex flex-col justify-center items-start relative mb-20">
+            <!-- Background Decorative SVGs -->
+            <div class="absolute top-10 right-10 opacity-20 text-lofi-green float-anim" style="font-size: 8rem;">
+                <i class="fas fa-cloud"></i>
+            </div>
+            <div class="absolute bottom-10 right-20 opacity-20 text-lofi-accent float-anim" style="animation-delay: 1s; font-size: 6rem;">
+                <i class="fas fa-moon"></i>
+            </div>
+
+            <div class="max-w-3xl relative z-10">
+                <div class="inline-block bg-lofi-green text-white px-3 py-1 rounded-full border-2 border-lofi-dark mb-4 font-hand text-lg shadow-[4px_4px_0px_#2b2d42] transform -rotate-2">
+                    Hello World! 👋
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold text-lofi-dark mb-2 font-hand">
+                    Khalil Itto
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-display text-gray-300 mb-8">
-                    I am a <span class="text-anime-accent typing-cursor" id="typing-text"></span>
+                <h2 class="text-2xl md:text-4xl text-lofi-text mb-6 font-hand">
+                    I build stuff on the <span class="text-lofi-accent underline decoration-wavy decoration-2">internet</span>.
                 </h2>
-                <p class="text-lg text-gray-400 mb-10 max-w-2xl leading-relaxed border-l-2 border-anime-primary pl-4 mx-auto md:mx-0">
-                    Constructing digital realities and bridging the gap between humanity and technology. Mission: Empowering the Arabic-speaking community through code and education.
+                <p class="text-lg text-lofi-dark mb-10 max-w-xl leading-relaxed font-medium">
+                    Web Developer, Graphic Designer, and IT Educator. I simplify complex tech for everyone, one pixel at a time. Grab a coffee ☕ and look around.
                 </p>
-                <div class="flex flex-wrap gap-6 justify-center md:justify-start">
-                    <a href="#contact" class="anime-btn px-8 py-3 bg-anime-primary text-white font-bold hover:bg-pink-600 transition-colors tracking-wider uppercase font-display">
-                        Start Mission
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="lofi-btn px-8 py-3 rounded-lg font-bold text-lg font-hand">
+                        Say Hi!
                     </a>
-                    <a href="https://www.youtube.com/@khalildroid" target="_blank" class="anime-btn px-8 py-3 bg-transparent border border-anime-accent text-anime-accent font-bold hover:bg-anime-accent/10 transition-colors tracking-wider uppercase font-display flex items-center gap-2">
-                        <i class="fab fa-youtube"></i> Watch Data
+                    <a href="https://www.youtube.com/@khalildroid" target="_blank" class="px-8 py-3 bg-white text-lofi-dark font-bold rounded-lg border-2 border-lofi-dark hover:bg-gray-100 transition-all shadow-[4px_4px_0px_#2b2d42] font-hand flex items-center gap-2">
+                        <i class="fab fa-youtube text-red-500"></i> My Channel
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="px-8 py-20 border-b border-anime-secondary/30">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12 flex items-end gap-4">
-                    <h2 class="text-5xl font-display font-bold text-white neon-text-pink">01</h2>
-                    <h3 class="text-3xl font-display font-bold text-anime-accent uppercase">Character Info</h3>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    <div class="anime-card p-8">
-                        <div class="space-y-6 text-gray-300 leading-relaxed">
-                            <p>
-                                <strong class="text-anime-primary">Identity:</strong> Khalil Itto. <br>
-                                <strong class="text-anime-primary">Class:</strong> Multi-skilled Professional. <br>
-                                <strong class="text-anime-primary">Base:</strong> Marrakesh, Morocco.
-                            </p>
-                            <p>
-                                Since <span class="font-mono text-anime-accent">2017</span>, I've been uploading data to the collective consciousness, specializing in making tech accessible. My background combines the logic of IT with the creativity of Graphic Design and the empathy of Teaching.
-                            </p>
-                            <p>
-                                Currently upgrading my stats at <span class="text-white font-bold">FLSH University</span> while running the "khalil droid" channel. I mod reality with custom Android ROMs and design visual assets for various factions (centers).
-                            </p>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4 mt-8 font-mono text-xs">
-                            <div class="p-2 border border-anime-secondary bg-anime-bg3/50">
-                                <span class="block text-gray-500">STATUS</span>
-                                <span class="text-anime-accent">ONLINE / OPEN TO WORK</span>
-                            </div>
-                            <div class="p-2 border border-anime-secondary bg-anime-bg3/50">
-                                <span class="block text-gray-500">EXP</span>
-                                <span class="text-anime-primary">6+ YEARS</span>
-                            </div>
-                        </div>
+        <section id="about" class="mb-20 scroll-mt-10">
+            <h2 class="text-4xl font-hand font-bold text-lofi-dark mb-8 flex items-center gap-3">
+                <i class="fas fa-star text-lofi-accent"></i> About Me
+            </h2>
+            
+            <div class="lofi-card p-8 bg-[#fffefc] relative overflow-hidden">
+                <!-- Sticker decoration -->
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-lofi-green rounded-full opacity-20"></div>
+
+                <div class="flex flex-col md:flex-row gap-10 items-center">
+                    <div class="flex-1 space-y-4 text-lg text-lofi-dark leading-relaxed">
+                        <p>
+                            Hey there! I'm <strong>Khalil</strong>. I'm a 23-year-old tech enthusiast based in <span class="bg-lofi-brown/20 px-1 rounded">Marrakesh, Morocco</span>.
+                        </p>
+                        <p>
+                            Since 2017, I've been on a mission to make technology less scary. Whether I'm teaching English, explaining Linux on my YouTube channel ("khalil droid"), or creating graphics, I love <strong>sharing knowledge</strong>.
+                        </p>
+                        <p>
+                            I'm also a bit of an Android nerd (love me some custom ROMs!) and currently leveling up my skills at FLSH University.
+                        </p>
                     </div>
-                    
-                    <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-anime-primary to-anime-accent rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                        <div class="relative">
-                            <img src="khalidr.jpg" alt="Khalil Portrait" class="w-full rounded-lg shadow-2xl object-cover border border-anime-secondary grayscale group-hover:grayscale-0 transition-all duration-500">
-                            <!-- Tech Overlay UI -->
-                            <div class="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-anime-accent/50 rounded-tr-lg"></div>
-                            <div class="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-anime-primary/50 rounded-bl-lg"></div>
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div class="polaroid transform rotate-3 bg-white p-4 shadow-lg border border-gray-200 max-w-xs">
+                             <div class="tape"></div>
+                            <img src="khalidr.jpg" alt="Portrait" class="aspect-square object-cover mb-4 border border-gray-100">
+                            <p class="font-hand text-center text-xl text-gray-600">Me! :)</p>
                         </div>
                     </div>
                 </div>
@@ -285,68 +262,61 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="px-8 py-20 border-b border-anime-secondary/30 relative">
-            <!-- Background Decor -->
-            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-anime-secondary/20 rounded-full blur-3xl -z-10"></div>
+        <section id="skills" class="mb-20 scroll-mt-10">
+            <h2 class="text-4xl font-hand font-bold text-lofi-dark mb-8 flex items-center gap-3">
+                <i class="fas fa-tools text-lofi-green"></i> My Toolkit
+            </h2>
 
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12 flex items-end gap-4">
-                    <h2 class="text-5xl font-display font-bold text-white neon-text-pink">02</h2>
-                    <h3 class="text-3xl font-display font-bold text-anime-accent uppercase">Ability Tree</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Skills Cloud -->
+                <div class="lofi-card p-6">
+                    <h3 class="text-2xl font-hand font-bold mb-6 border-b-2 border-dashed border-gray-300 pb-2">Stuff I'm Good At</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Graphic Design</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Design Thinking</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">IT Nerd</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Teaching</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Problem Solving</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Computer Literacy</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Project Mgmt</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Communication</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Content Creation</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Android ROMs</span>
+                        <!-- New Skills -->
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#aacc00]">Photo Retouching</span>
+                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#aacc00]">Virtualization</span>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Technical & Soft Skills -->
-                    <div>
-                        <h4 class="text-xl font-display font-bold text-white mb-6 flex items-center gap-2 border-b border-gray-700 pb-2">
-                            <i class="fas fa-microchip text-anime-primary"></i> Active Skills
-                        </h4>
-                        <div class="flex flex-wrap gap-3">
-                            <!-- Loop for skill tags with anime styling -->
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Graphic Design</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">IT Support</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Teaching</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Content Creation</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Problem Solving</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Android ROMs</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Photo Retouching</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Virtualization</span>
-                            <span class="px-3 py-1 bg-anime-bg3 border border-anime-accent/30 text-anime-accent text-sm font-mono hover:bg-anime-accent hover:text-black transition-colors cursor-default clip-path-angle">Linux</span>
+                <!-- Languages -->
+                <div class="lofi-card p-6 bg-white">
+                    <h3 class="text-2xl font-hand font-bold mb-6 border-b-2 border-dashed border-gray-300 pb-2">Languages</h3>
+                    <div class="space-y-4 font-hand text-lg">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Arabic</span>
+                                <span>Native</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-4 rounded-full border-2 border-lofi-dark overflow-hidden">
+                                <div class="bg-lofi-accent h-full border-r-2 border-lofi-dark" style="width: 100%"></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Language Bars -->
-                    <div>
-                        <h4 class="text-xl font-display font-bold text-white mb-6 flex items-center gap-2 border-b border-gray-700 pb-2">
-                            <i class="fas fa-comments text-anime-primary"></i> Language Protocols
-                        </h4>
-                        <div class="space-y-6">
-                            <div class="relative">
-                                <div class="flex justify-between mb-1 text-xs font-mono text-anime-accent">
-                                    <span>ARABIC [NATIVE]</span>
-                                    <span>100%</span>
-                                </div>
-                                <div class="w-full bg-anime-bg3 h-3 skew-x-[-20deg] border border-gray-700 overflow-hidden">
-                                    <div class="bg-anime-primary h-full" style="width: 100%; box-shadow: 0 0 10px #ff00cc;"></div>
-                                </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>English</span>
+                                <span>Fluent</span>
                             </div>
-                            <div class="relative">
-                                <div class="flex justify-between mb-1 text-xs font-mono text-anime-accent">
-                                    <span>ENGLISH [FLUENT]</span>
-                                    <span>90%</span>
-                                </div>
-                                <div class="w-full bg-anime-bg3 h-3 skew-x-[-20deg] border border-gray-700 overflow-hidden">
-                                    <div class="bg-anime-primary h-full" style="width: 90%; box-shadow: 0 0 10px #ff00cc;"></div>
-                                </div>
+                            <div class="w-full bg-gray-200 h-4 rounded-full border-2 border-lofi-dark overflow-hidden">
+                                <div class="bg-lofi-green h-full border-r-2 border-lofi-dark" style="width: 90%"></div>
                             </div>
-                            <div class="relative">
-                                <div class="flex justify-between mb-1 text-xs font-mono text-anime-accent">
-                                    <span>TAMAZIGHT</span>
-                                    <span>75%</span>
-                                </div>
-                                <div class="w-full bg-anime-bg3 h-3 skew-x-[-20deg] border border-gray-700 overflow-hidden">
-                                    <div class="bg-anime-primary h-full" style="width: 75%; box-shadow: 0 0 10px #ff00cc;"></div>
-                                </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Tamazight</span>
+                                <span>Native</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-4 rounded-full border-2 border-lofi-dark overflow-hidden">
+                                <div class="bg-lofi-brown h-full border-r-2 border-lofi-dark" style="width: 75%"></div>
                             </div>
                         </div>
                     </div>
@@ -354,264 +324,218 @@
             </div>
         </section>
 
-        <!-- Experience & Education Section -->
-        <section id="experience" class="px-8 py-20 border-b border-anime-secondary/30">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12 flex items-end gap-4">
-                    <h2 class="text-5xl font-display font-bold text-white neon-text-pink">03</h2>
-                    <h3 class="text-3xl font-display font-bold text-anime-accent uppercase">Quest Log</h3>
+        <!-- Experience Section -->
+        <section id="experience" class="mb-20 scroll-mt-10">
+            <h2 class="text-4xl font-hand font-bold text-lofi-dark mb-8 flex items-center gap-3">
+                <i class="fas fa-history text-lofi-brown"></i> Timeline
+            </h2>
+
+            <div class="relative border-l-4 border-dotted border-lofi-dark ml-4 md:ml-10 space-y-12 pl-8 md:pl-12 py-4">
+                <!-- Item 1 -->
+                <div class="relative">
+                    <div class="absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-accent rounded-full border-4 border-white shadow-md"></div>
+                    <div class="lofi-card p-6 bg-white relative">
+                        <!-- Pin -->
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 border border-black shadow-sm"></div>
+                        <span class="inline-block bg-lofi-bg text-xs font-bold px-2 py-1 rounded mb-2 border border-lofi-dark">2019 - Present</span>
+                        <h3 class="text-xl font-bold text-lofi-dark">Teaching English & IT</h3>
+                        <p class="text-sm text-gray-500 mb-2 italic">Private Centers</p>
+                        <p class="text-gray-700">Helping students level up their English and tech skills in Ait Ourir. It's been an amazing journey seeing them grow!</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="relative">
+                    <div class="absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-green rounded-full border-4 border-white shadow-md"></div>
+                    <div class="lofi-card p-6 bg-white relative">
+                         <!-- Pin -->
+                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border border-black shadow-sm"></div>
+                        <span class="inline-block bg-lofi-bg text-xs font-bold px-2 py-1 rounded mb-2 border border-lofi-dark">2021 - Present</span>
+                        <h3 class="text-xl font-bold text-lofi-dark">Graphic Design</h3>
+                        <p class="text-sm text-gray-500 mb-2 italic">Freelance / Centers</p>
+                        <p class="text-gray-700">Making things look good! Designed posters, logos, and social media content for various local centers.</p>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Work History -->
-                    <div class="anime-card p-6">
-                        <h3 class="text-xl font-display font-bold text-white mb-6 border-l-4 border-anime-primary pl-3">Career History</h3>
-                        <div class="space-y-8 relative pl-4 border-l border-gray-700 ml-2">
-                            <div class="relative pl-6">
-                                <div class="absolute -left-[21px] top-1 w-3 h-3 bg-anime-bg border-2 border-anime-accent rounded-full"></div>
-                                <span class="text-xs font-mono text-anime-primary mb-1 block">2019-2021 | 2023-PRESENT</span>
-                                <h4 class="text-lg font-bold text-white">Teaching English & IT</h4>
-                                <p class="text-gray-400 text-xs uppercase tracking-wider mb-2">Private Centers</p>
-                                <p class="text-gray-400 text-sm">Instructing new recruits in English communication and basic terminal usage (IT) at various outposts in Ait Ourir.</p>
-                            </div>
-                            <div class="relative pl-6">
-                                <div class="absolute -left-[21px] top-1 w-3 h-3 bg-anime-bg border-2 border-anime-accent rounded-full"></div>
-                                <span class="text-xs font-mono text-anime-primary mb-1 block">2021 - PRESENT</span>
-                                <h4 class="text-lg font-bold text-white">Graphic Design</h4>
-                                <p class="text-gray-400 text-xs uppercase tracking-wider mb-2">Freelance / Centers</p>
-                                <p class="text-gray-400 text-sm">Creating visual propaganda (designs, posters) and managing comms channels for multiple factions.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Education -->
-                    <div class="anime-card p-6">
-                        <h3 class="text-xl font-display font-bold text-white mb-6 border-l-4 border-anime-primary pl-3">Education Data</h3>
-                        <div class="space-y-8 relative pl-4 border-l border-gray-700 ml-2">
-                            <div class="relative pl-6">
-                                <div class="absolute -left-[21px] top-1 w-3 h-3 bg-anime-bg border-2 border-anime-accent rounded-full"></div>
-                                <span class="text-xs font-mono text-anime-primary mb-1 block">CURRENT</span>
-                                <h4 class="text-lg font-bold text-white">University Student</h4>
-                                <p class="text-gray-400 text-xs uppercase tracking-wider mb-2">FLSH University</p>
-                                <p class="text-gray-400 text-sm">Acquiring advanced knowledge database. Current Level: BAC+1.</p>
-                            </div>
-                            <div class="relative pl-6">
-                                <div class="absolute -left-[21px] top-1 w-3 h-3 bg-anime-bg border-2 border-anime-accent rounded-full"></div>
-                                <span class="text-xs font-mono text-anime-primary mb-1 block">2021 - 2023</span>
-                                <h4 class="text-lg font-bold text-white">Baccalaureate Diplomas</h4>
-                                <p class="text-gray-400 text-xs uppercase tracking-wider mb-2">High School</p>
-                                <p class="text-gray-400 text-sm">Successfully completed dual primary education modules.</p>
-                            </div>
-                        </div>
+                 <!-- Item 3 -->
+                 <div class="relative">
+                    <div class="absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-brown rounded-full border-4 border-white shadow-md"></div>
+                    <div class="lofi-card p-6 bg-white relative">
+                         <!-- Pin -->
+                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-yellow-500 border border-black shadow-sm"></div>
+                        <span class="inline-block bg-lofi-bg text-xs font-bold px-2 py-1 rounded mb-2 border border-lofi-dark">Current</span>
+                        <h3 class="text-xl font-bold text-lofi-dark">University Student</h3>
+                        <p class="text-sm text-gray-500 mb-2 italic">FLSH University</p>
+                        <p class="text-gray-700">Currently studying hard (BAC+1). Always learning!</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Certificates Section -->
-        <section id="certificates" class="px-8 py-20 border-b border-anime-secondary/30">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12 flex items-end gap-4">
-                    <h2 class="text-5xl font-display font-bold text-white neon-text-pink">04</h2>
-                    <h3 class="text-3xl font-display font-bold text-anime-accent uppercase">Achievements</h3>
-                </div>
+        <section id="certificates" class="mb-20 scroll-mt-10">
+            <h2 class="text-4xl font-hand font-bold text-lofi-dark mb-8 flex items-center gap-3">
+                <i class="fas fa-certificate text-yellow-500"></i> Wall of Fame
+            </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Certificate Cards -->
-                    <div class="anime-card p-6 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-anime-bg2 flex items-center justify-center rounded border border-anime-accent text-anime-accent text-2xl">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold font-display text-sm">CCNA</h4>
-                            <p class="text-xs text-gray-400">Cisco Certified</p>
-                        </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cert Item -->
+                <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                    <i class="fas fa-network-wired text-lofi-accent text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lofi-dark">CCNA</h4>
+                        <p class="text-xs text-gray-500">Cisco Certified</p>
                     </div>
-                    <div class="anime-card p-6 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-anime-bg2 flex items-center justify-center rounded border border-anime-accent text-anime-accent text-2xl">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold font-display text-sm">Oracle Cloud AI</h4>
-                            <p class="text-xs text-gray-400">Certified Associate</p>
-                        </div>
+                </div>
+                 <!-- Cert Item -->
+                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                    <i class="fas fa-database text-lofi-accent text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lofi-dark">Oracle Cloud AI</h4>
+                        <p class="text-xs text-gray-500">Foundations Associate</p>
                     </div>
-                    <div class="anime-card p-6 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-anime-bg2 flex items-center justify-center rounded border border-anime-accent text-anime-accent text-2xl">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold font-display text-sm">Network Security</h4>
-                            <p class="text-xs text-gray-400">Mindluster</p>
-                        </div>
+                </div>
+                 <!-- Cert Item -->
+                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                    <i class="fas fa-shield-alt text-lofi-accent text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lofi-dark">Network Security</h4>
+                        <p class="text-xs text-gray-500">Mindluster</p>
                     </div>
-                    <div class="anime-card p-6 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-anime-bg2 flex items-center justify-center rounded border border-anime-accent text-anime-accent text-2xl">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold font-display text-sm">Basic IT</h4>
-                            <p class="text-xs text-gray-400">Dell/EFE</p>
-                        </div>
+                </div>
+                 <!-- Cert Item -->
+                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                    <i class="fas fa-laptop-code text-lofi-accent text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lofi-dark">Basic IT</h4>
+                        <p class="text-xs text-gray-500">Dell/EFE</p>
                     </div>
-                    <div class="anime-card p-6 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-anime-bg2 flex items-center justify-center rounded border border-anime-accent text-anime-accent text-2xl">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold font-display text-sm">CAEDEL Program</h4>
-                            <p class="text-xs text-gray-400">Entrepreneurship</p>
-                        </div>
+                </div>
+                 <!-- Cert Item -->
+                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                    <i class="fas fa-users text-lofi-accent text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lofi-dark">CAEDEL Program</h4>
+                        <p class="text-xs text-gray-500">Entrepreneurship</p>
                     </div>
-                    <div class="anime-card p-6 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-anime-bg2 flex items-center justify-center rounded border border-anime-accent text-anime-accent text-2xl">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold font-display text-sm">Ministry of Youth</h4>
-                            <p class="text-xs text-gray-400">Certificates</p>
-                        </div>
+                </div>
+                 <!-- Cert Item -->
+                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                    <i class="fas fa-award text-lofi-accent text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lofi-dark">Ministry of Youth</h4>
+                        <p class="text-xs text-gray-500">Various Awards</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="px-8 py-20 border-b border-anime-secondary/30">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12 flex items-end gap-4">
-                    <h2 class="text-5xl font-display font-bold text-white neon-text-pink">05</h2>
-                    <h3 class="text-3xl font-display font-bold text-anime-accent uppercase">Visual Database</h3>
-                </div>
+        <!-- Gallery Section (Polaroid Style) -->
+        <section id="gallery" class="mb-20 scroll-mt-10">
+            <h2 class="text-4xl font-hand font-bold text-lofi-dark mb-12 flex items-center gap-3">
+                <i class="fas fa-images text-purple-500"></i> Photo Dump
+            </h2>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-grid">
-                    <!-- Images styled as data blocks -->
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_5_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_8_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_10_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_6_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_7_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_9_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="photo_3_2025-11-06_14-41-58.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="IMG-20251108-WA0009.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="IMG-20251108-WA0012.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="IMG-20251108-WA0013.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="IMG-20251108-WA0014.jpg" alt="Gallery Image" loading="lazy">
-                    </div>
-                    <!-- The New 3 Images Added -->
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="WhatsApp Image 2025-11-08 at 18.58.59_8fd1205e.jpg" alt="CCNA Certificate" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="WhatsApp Image 2025-11-08 at 18.59.02_4950d841.jpg" alt="CAEDEL Certificate" loading="lazy">
-                    </div>
-                    <div class="gallery-item aspect-square bg-gray-800">
-                        <img src="WhatsApp Image 2025-11-08 at 18.59.01_ad9fa44a.jpg" alt="Oracle Certificate" loading="lazy">
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
+                <!-- Images with random rotations set inline for simplicity, can be randomized in JS too -->
+                <div class="polaroid" style="--rotation: -2deg;">
+                     <div class="tape"></div>
+                    <img src="photo_5_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: 3deg;">
+                     <div class="tape"></div>
+                    <img src="photo_8_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: -1deg;">
+                     <div class="tape"></div>
+                    <img src="photo_10_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: 2deg;">
+                     <div class="tape"></div>
+                    <img src="photo_6_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: -3deg;">
+                     <div class="tape"></div>
+                    <img src="photo_7_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: 1deg;">
+                     <div class="tape"></div>
+                    <img src="photo_9_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: 4deg;">
+                     <div class="tape"></div>
+                    <img src="photo_3_2025-11-06_14-41-58.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: -2deg;">
+                     <div class="tape"></div>
+                    <img src="IMG-20251108-WA0009.jpg" alt="Memory">
+                </div>
+                <div class="polaroid" style="--rotation: 2deg;">
+                     <div class="tape"></div>
+                    <img src="IMG-20251108-WA0012.jpg" alt="Memory">
+                </div>
+                 <div class="polaroid" style="--rotation: -1deg;">
+                     <div class="tape"></div>
+                    <img src="IMG-20251108-WA0013.jpg" alt="Memory">
+                </div>
+                 <!-- New Certificate Images Added as Polaroids -->
+                 <div class="polaroid" style="--rotation: 3deg;">
+                     <div class="tape"></div>
+                    <img src="WhatsApp Image 2025-11-08 at 18.58.59_8fd1205e.jpg" alt="CCNA">
+                </div>
+                 <div class="polaroid" style="--rotation: -3deg;">
+                     <div class="tape"></div>
+                    <img src="WhatsApp Image 2025-11-08 at 18.59.02_4950d841.jpg" alt="CAEDEL">
+                </div>
+                 <div class="polaroid" style="--rotation: 1deg;">
+                     <div class="tape"></div>
+                    <img src="WhatsApp Image 2025-11-08 at 18.59.01_ad9fa44a.jpg" alt="Oracle">
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="px-8 py-20 bg-anime-bg3/30">
-            <div class="max-w-5xl mx-auto text-center">
-                <div class="mb-12">
-                    <p class="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">Communication</p>
-                    <h2 class="text-4xl font-display font-bold text-white neon-text">Establish Link</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div class="anime-card p-8">
-                        <i class="fas fa-map-marker-alt text-3xl text-anime-accent mb-4 animate-bounce"></i>
-                        <h4 class="text-xl font-bold text-white mb-2 font-display">Coordinates</h4>
-                        <p class="text-gray-400 text-sm">Ait Ourir Amekdar,<br>Marrakesh, Morocco</p>
+        <section id="contact" class="mb-10 scroll-mt-10">
+            <div class="lofi-card bg-lofi-dark text-white p-10 text-center relative overflow-hidden">
+                <!-- Background Dots -->
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <h2 class="text-4xl font-hand font-bold mb-6 relative z-10">Let's Create Something Cool!</h2>
+                
+                <div class="flex flex-wrap justify-center gap-8 mb-8 relative z-10">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt text-lofi-accent"></i>
+                        <span>Marrakesh, Morocco</span>
                     </div>
-                    <div class="anime-card p-8">
-                        <i class="fas fa-envelope text-3xl text-anime-accent mb-4"></i>
-                        <h4 class="text-xl font-bold text-white mb-2 font-display">Email</h4>
-                        <p class="text-gray-400 text-sm break-all">khalilitto04@gmail.com</p>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-lofi-accent"></i>
+                        <span class="break-all">khalilitto04@gmail.com</span>
                     </div>
-                    <div class="anime-card p-8">
-                        <i class="fas fa-phone text-3xl text-anime-accent mb-4"></i>
-                        <h4 class="text-xl font-bold text-white mb-2 font-display">Comms</h4>
-                        <p class="text-gray-400 text-sm">+212 613 539 159</p>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-phone text-lofi-accent"></i>
+                        <span>+212 613 539 159</span>
                     </div>
                 </div>
 
-                <div class="flex justify-center gap-6">
-                    <a href="https://www.facebook.com/khalildroid/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded clip-path-angle bg-anime-bg border border-anime-primary text-white hover:bg-anime-primary hover:shadow-[0_0_15px_#ff00cc] transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/khalil.itto/" target="_blank" class="w-12 h-12 flex items-center justify-center rounded clip-path-angle bg-anime-bg border border-anime-primary text-white hover:bg-anime-primary hover:shadow-[0_0_15px_#ff00cc] transition-all duration-300"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@khalildroid" target="_blank" class="w-12 h-12 flex items-center justify-center rounded clip-path-angle bg-anime-bg border border-anime-primary text-white hover:bg-anime-primary hover:shadow-[0_0_15px_#ff00cc] transition-all duration-300"><i class="fab fa-youtube"></i></a>
-                    <a href="https://github.com/khalildroid" target="_blank" class="w-12 h-12 flex items-center justify-center rounded clip-path-angle bg-anime-bg border border-anime-primary text-white hover:bg-anime-primary hover:shadow-[0_0_15px_#ff00cc] transition-all duration-300"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/khalil-itto" target="_blank" class="w-12 h-12 flex items-center justify-center rounded clip-path-angle bg-anime-bg border border-anime-primary text-white hover:bg-anime-primary hover:shadow-[0_0_15px_#ff00cc] transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <div class="flex justify-center gap-4 relative z-10">
+                     <a href="https://www.facebook.com/khalildroid/" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white text-lofi-dark rounded-full hover:bg-lofi-accent hover:text-white transition-all transform hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/khalil.itto/" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white text-lofi-dark rounded-full hover:bg-lofi-accent hover:text-white transition-all transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@khalildroid" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white text-lofi-dark rounded-full hover:bg-lofi-accent hover:text-white transition-all transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/khalildroid" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white text-lofi-dark rounded-full hover:bg-lofi-accent hover:text-white transition-all transform hover:scale-110"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/khalil-itto" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white text-lofi-dark rounded-full hover:bg-lofi-accent hover:text-white transition-all transform hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-[100] flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <!-- Decorative Corners for Lightbox -->
-        <div class="absolute top-4 left-4 w-16 h-16 border-t-4 border-l-4 border-anime-accent"></div>
-        <div class="absolute bottom-4 right-4 w-16 h-16 border-b-4 border-r-4 border-anime-primary"></div>
-        
-        <img id="lightbox-img" src="" alt="Full Size" class="max-w-full max-h-[90vh] rounded border border-anime-accent/50 shadow-[0_0_30px_rgba(0,242,255,0.2)] transform scale-90 transition-transform duration-300">
-        <button id="lightbox-close" class="absolute top-8 right-8 text-white text-4xl hover:text-anime-primary transition-colors">&times;</button>
+    <!-- Lightbox Modal (Keeping it simple and functional) -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-[100] flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        <img id="lightbox-img" src="" alt="Full Size" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-4 border-white transform scale-90 transition-transform duration-300">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl hover:text-lofi-accent">&times;</button>
     </div>
 
     <script>
-        // Typing Effect
-        const phrases = ["Web Developer", "Content Creator", "Graphic Designer", "IT Educator"];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingText = document.getElementById("typing-text");
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-            if (isDeleting) {
-                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                setTimeout(type, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
-        }
-        type();
-
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const sidebar = document.getElementById('sidebar');
@@ -626,27 +550,17 @@
             }
         });
 
-        // Close sidebar when clicking a link on mobile
-        document.querySelectorAll('#sidebar a').forEach(link => {
-            link.addEventListener('click', () => {
-                if(window.innerWidth < 768) {
-                    sidebar.classList.add('-translate-x-full');
-                    isMenuOpen = false;
-                }
-            });
-        });
-
         // Gallery Lightbox
-        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const galleryItems = document.querySelectorAll('.polaroid img');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.getElementById('lightbox-close');
 
         galleryItems.forEach(img => {
-            img.addEventListener('click', () => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent bubbling
                 lightboxImg.src = img.src;
                 lightbox.classList.remove('hidden');
-                // Small delay to allow display:flex to apply before adding opacity class
                 setTimeout(() => {
                     lightbox.classList.remove('opacity-0');
                     lightboxImg.classList.remove('scale-90');
@@ -668,7 +582,6 @@
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
-
     </script>
 </body>
 </html>
