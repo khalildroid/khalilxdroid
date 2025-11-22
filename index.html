@@ -34,6 +34,21 @@
                     },
                     backgroundImage: {
                         'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    },
+                    animation: {
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'pop': 'pop 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        pop: {
+                            '0%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.1)' },
+                            '100%': { transform: 'scale(1)' },
+                        }
                     }
                 }
             }
@@ -67,6 +82,57 @@
         .lofi-card:hover {
             transform: translate(-4px, -4px);
             box-shadow: 12px 12px 0px #ff9f1c;
+        }
+
+        /* Interactive Timeline Item */
+        .timeline-item {
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+        .timeline-item:hover .timeline-pin {
+            transform: translate(-50%, -5px) scale(1.2);
+            background-color: #ff9f1c;
+        }
+
+        /* Certificate Card Animation */
+        .cert-card {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 6px 6px 0px #d4a373;
+            border-color: #ff9f1c;
+        }
+        .cert-card:hover i {
+            animation: bounce 0.5s ease infinite alternate;
+            color: #ff9f1c;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-3px); }
+        }
+
+        /* Skill Tag Animation */
+        .skill-tag {
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+        .skill-tag:hover {
+            transform: scale(1.1) rotate(2deg);
+            background-color: #ff9f1c;
+            color: white;
+            border-color: #2b2d42;
+            box-shadow: 4px 4px 0px #2b2d42;
+        }
+
+        /* Language Bar Animation */
+        .lang-bar-fill {
+            width: 0%; /* Start at 0 width */
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         /* Polaroid Gallery Style */
@@ -268,27 +334,27 @@
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Skills Cloud -->
+                <!-- Skills Cloud with Animation -->
                 <div class="lofi-card p-6">
                     <h3 class="text-2xl font-hand font-bold mb-6 border-b-2 border-dashed border-gray-300 pb-2">Stuff I'm Good At</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Graphic Design</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Design Thinking</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">IT Nerd</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Teaching</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Problem Solving</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Computer Literacy</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Project Mgmt</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Communication</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Content Creation</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Android ROMs</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Graphic Design</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Design Thinking</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">IT Nerd</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Teaching</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Problem Solving</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Computer Literacy</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Project Mgmt</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Communication</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Content Creation</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#d4a373]">Android ROMs</span>
                         <!-- New Skills -->
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#aacc00]">Photo Retouching</span>
-                        <span class="px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#aacc00]">Virtualization</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#aacc00]">Photo Retouching</span>
+                        <span class="skill-tag px-4 py-2 bg-lofi-bg border-2 border-lofi-dark rounded-lg font-bold text-sm shadow-[2px_2px_0px_#aacc00]">Virtualization</span>
                     </div>
                 </div>
 
-                <!-- Languages -->
+                <!-- Animated Languages -->
                 <div class="lofi-card p-6 bg-white">
                     <h3 class="text-2xl font-hand font-bold mb-6 border-b-2 border-dashed border-gray-300 pb-2">Languages</h3>
                     <div class="space-y-4 font-hand text-lg">
@@ -298,7 +364,7 @@
                                 <span>Native</span>
                             </div>
                             <div class="w-full bg-gray-200 h-4 rounded-full border-2 border-lofi-dark overflow-hidden">
-                                <div class="bg-lofi-accent h-full border-r-2 border-lofi-dark" style="width: 100%"></div>
+                                <div class="bg-lofi-accent h-full border-r-2 border-lofi-dark lang-bar-fill" data-width="100%"></div>
                             </div>
                         </div>
                         <div>
@@ -307,7 +373,7 @@
                                 <span>Fluent</span>
                             </div>
                             <div class="w-full bg-gray-200 h-4 rounded-full border-2 border-lofi-dark overflow-hidden">
-                                <div class="bg-lofi-green h-full border-r-2 border-lofi-dark" style="width: 90%"></div>
+                                <div class="bg-lofi-green h-full border-r-2 border-lofi-dark lang-bar-fill" data-width="90%"></div>
                             </div>
                         </div>
                         <div>
@@ -316,7 +382,7 @@
                                 <span>Native</span>
                             </div>
                             <div class="w-full bg-gray-200 h-4 rounded-full border-2 border-lofi-dark overflow-hidden">
-                                <div class="bg-lofi-brown h-full border-r-2 border-lofi-dark" style="width: 75%"></div>
+                                <div class="bg-lofi-brown h-full border-r-2 border-lofi-dark lang-bar-fill" data-width="75%"></div>
                             </div>
                         </div>
                     </div>
@@ -324,7 +390,7 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- Experience Section (Interactive) -->
         <section id="experience" class="mb-20 scroll-mt-10">
             <h2 class="text-4xl font-hand font-bold text-lofi-dark mb-8 flex items-center gap-3">
                 <i class="fas fa-history text-lofi-brown"></i> Timeline
@@ -332,8 +398,8 @@
 
             <div class="relative border-l-4 border-dotted border-lofi-dark ml-4 md:ml-10 space-y-12 pl-8 md:pl-12 py-4">
                 <!-- Item 1 -->
-                <div class="relative">
-                    <div class="absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-accent rounded-full border-4 border-white shadow-md"></div>
+                <div class="timeline-item relative">
+                    <div class="timeline-pin absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-accent rounded-full border-4 border-white shadow-md transition-transform duration-300"></div>
                     <div class="lofi-card p-6 bg-white relative">
                         <!-- Pin -->
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 border border-black shadow-sm"></div>
@@ -345,8 +411,8 @@
                 </div>
                 
                 <!-- Item 2 -->
-                <div class="relative">
-                    <div class="absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-green rounded-full border-4 border-white shadow-md"></div>
+                <div class="timeline-item relative">
+                    <div class="timeline-pin absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-green rounded-full border-4 border-white shadow-md transition-transform duration-300"></div>
                     <div class="lofi-card p-6 bg-white relative">
                          <!-- Pin -->
                          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border border-black shadow-sm"></div>
@@ -358,8 +424,8 @@
                 </div>
 
                  <!-- Item 3 -->
-                 <div class="relative">
-                    <div class="absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-brown rounded-full border-4 border-white shadow-md"></div>
+                 <div class="timeline-item relative">
+                    <div class="timeline-pin absolute -left-[46px] md:-left-[62px] top-0 w-8 h-8 bg-lofi-brown rounded-full border-4 border-white shadow-md transition-transform duration-300"></div>
                     <div class="lofi-card p-6 bg-white relative">
                          <!-- Pin -->
                          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-yellow-500 border border-black shadow-sm"></div>
@@ -380,51 +446,51 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Cert Item -->
-                <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
-                    <i class="fas fa-network-wired text-lofi-accent text-2xl"></i>
+                <div class="cert-card bg-white p-4 rounded-lg border-2 border-lofi-dark shadow-[4px_4px_0px_#2b2d42] flex items-center gap-3 animate-on-scroll">
+                    <i class="fas fa-network-wired text-lofi-accent text-2xl transition-colors"></i>
                     <div>
-                        <h4 class="font-bold text-lofi-dark">CCNA</h4>
-                        <p class="text-xs text-gray-500">Cisco Certified</p>
+                        <h4 class="font-bold text-lofi-dark font-hand text-lg">CCNA</h4>
+                        <p class="text-xs text-gray-500 font-sans">Cisco Certified</p>
                     </div>
                 </div>
                  <!-- Cert Item -->
-                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
-                    <i class="fas fa-database text-lofi-accent text-2xl"></i>
+                 <div class="cert-card bg-white p-4 rounded-lg border-2 border-lofi-dark shadow-[4px_4px_0px_#2b2d42] flex items-center gap-3 animate-on-scroll">
+                    <i class="fas fa-database text-lofi-accent text-2xl transition-colors"></i>
                     <div>
-                        <h4 class="font-bold text-lofi-dark">Oracle Cloud AI</h4>
-                        <p class="text-xs text-gray-500">Foundations Associate</p>
+                        <h4 class="font-bold text-lofi-dark font-hand text-lg">Oracle Cloud AI</h4>
+                        <p class="text-xs text-gray-500 font-sans">Foundations Associate</p>
                     </div>
                 </div>
                  <!-- Cert Item -->
-                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
-                    <i class="fas fa-shield-alt text-lofi-accent text-2xl"></i>
+                 <div class="cert-card bg-white p-4 rounded-lg border-2 border-lofi-dark shadow-[4px_4px_0px_#2b2d42] flex items-center gap-3 animate-on-scroll">
+                    <i class="fas fa-shield-alt text-lofi-accent text-2xl transition-colors"></i>
                     <div>
-                        <h4 class="font-bold text-lofi-dark">Network Security</h4>
-                        <p class="text-xs text-gray-500">Mindluster</p>
+                        <h4 class="font-bold text-lofi-dark font-hand text-lg">Network Security</h4>
+                        <p class="text-xs text-gray-500 font-sans">Mindluster</p>
                     </div>
                 </div>
                  <!-- Cert Item -->
-                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
-                    <i class="fas fa-laptop-code text-lofi-accent text-2xl"></i>
+                 <div class="cert-card bg-white p-4 rounded-lg border-2 border-lofi-dark shadow-[4px_4px_0px_#2b2d42] flex items-center gap-3 animate-on-scroll">
+                    <i class="fas fa-laptop-code text-lofi-accent text-2xl transition-colors"></i>
                     <div>
-                        <h4 class="font-bold text-lofi-dark">Basic IT</h4>
-                        <p class="text-xs text-gray-500">Dell/EFE</p>
+                        <h4 class="font-bold text-lofi-dark font-hand text-lg">Basic IT</h4>
+                        <p class="text-xs text-gray-500 font-sans">Dell/EFE</p>
                     </div>
                 </div>
                  <!-- Cert Item -->
-                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
-                    <i class="fas fa-users text-lofi-accent text-2xl"></i>
+                 <div class="cert-card bg-white p-4 rounded-lg border-2 border-lofi-dark shadow-[4px_4px_0px_#2b2d42] flex items-center gap-3 animate-on-scroll">
+                    <i class="fas fa-users text-lofi-accent text-2xl transition-colors"></i>
                     <div>
-                        <h4 class="font-bold text-lofi-dark">CAEDEL Program</h4>
-                        <p class="text-xs text-gray-500">Entrepreneurship</p>
+                        <h4 class="font-bold text-lofi-dark font-hand text-lg">CAEDEL Program</h4>
+                        <p class="text-xs text-gray-500 font-sans">Entrepreneurship</p>
                     </div>
                 </div>
                  <!-- Cert Item -->
-                 <div class="bg-white p-4 rounded-lg border border-gray-300 shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
-                    <i class="fas fa-award text-lofi-accent text-2xl"></i>
+                 <div class="cert-card bg-white p-4 rounded-lg border-2 border-lofi-dark shadow-[4px_4px_0px_#2b2d42] flex items-center gap-3 animate-on-scroll">
+                    <i class="fas fa-award text-lofi-accent text-2xl transition-colors"></i>
                     <div>
-                        <h4 class="font-bold text-lofi-dark">Ministry of Youth</h4>
-                        <p class="text-xs text-gray-500">Various Awards</p>
+                        <h4 class="font-bold text-lofi-dark font-hand text-lg">Ministry of Youth</h4>
+                        <p class="text-xs text-gray-500 font-sans">Various Awards</p>
                     </div>
                 </div>
             </div>
@@ -478,7 +544,8 @@
                      <div class="tape"></div>
                     <img src="IMG-20251108-WA0013.jpg" alt="Memory">
                 </div>
-                 <!-- New Certificate Images Added as Polaroids -->
+                 <!-- Removed IMG-20251108-WA0014.jpg -->
+                 <!-- The New 3 Certificate Images Added as Polaroids -->
                  <div class="polaroid" style="--rotation: 3deg;">
                      <div class="tape"></div>
                     <img src="WhatsApp Image 2025-11-08 at 18.58.59_8fd1205e.jpg" alt="CCNA">
@@ -549,6 +616,29 @@
                 sidebar.classList.add('-translate-x-full');
             }
         });
+
+        // Scroll Animations Trigger
+        const skillTags = document.querySelectorAll('.skill-tag');
+        const langBars = document.querySelectorAll('.lang-bar-fill');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Skill Tags Animation
+                    if (entry.target.classList.contains('skill-tag')) {
+                        entry.target.classList.add('animate-pop');
+                    }
+                    // Language Bar Animation
+                    if (entry.target.classList.contains('lang-bar-fill')) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width;
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        skillTags.forEach(tag => observer.observe(tag));
+        langBars.forEach(bar => observer.observe(bar));
 
         // Gallery Lightbox
         const galleryItems = document.querySelectorAll('.polaroid img');
